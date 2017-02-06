@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -15,52 +14,26 @@
 
     <Button
         android:id="@+id/hot_film"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/main_button_selector"
-        android:text="@string/hot_film"
-        android:textColor="@color/main_button_text"
-        android:textSize="15sp"/>
+        style="@style/main_page_button"
+        android:text="@string/hot_film" />
 
     <Button
         android:id="@+id/stock"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/main_button_selector"
-        android:text="@string/stock"
-        android:textColor="@color/main_button_text"
-        android:textSize="15sp"/>
+        style="@style/main_page_button"
+        android:text="@string/stock" />
 
     <Button
         android:id="@+id/reader"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/main_button_selector"
-        android:text="@string/xyz_reader"
-        android:textColor="@color/main_button_text"
-        android:textSize="15sp"/>
+        style="@style/main_page_button"
+        android:text="@string/xyz_reader" />
 
     <Button
         android:id="@+id/news"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/main_button_selector"
-        android:text="@string/newest_news"
-        android:textColor="@color/main_button_text"
-        android:textSize="15sp"/>
+        style="@style/main_page_button"
+        android:text="@string/newest_news" />
 
     <Button
         android:id="@+id/graduation_project"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/main_button_selector"
-        android:text="@string/graduation_project"
-        android:textColor="@color/main_button_text"
-        android:textSize="15sp"/>
-
+        style="@style/main_page_button"
+        android:text="@string/graduation_project" />
 </LinearLayout>

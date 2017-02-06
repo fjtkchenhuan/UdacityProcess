@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 /**
@@ -14,6 +13,8 @@ import android.widget.Toast;
  */
 
 public class PlaceholderFragment extends Fragment implements View.OnClickListener {
+
+    private static Toast mToast = null;
 
     public PlaceholderFragment() {
     }
@@ -27,41 +28,40 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btn1 = (Button) view.findViewById(R.id.hot_film);
-        Button btn2 = (Button) view.findViewById(R.id.stock);
-        Button btn3 = (Button) view.findViewById(R.id.reader);
-        Button btn4 = (Button) view.findViewById(R.id.news);
-        Button btn5 = (Button) view.findViewById(R.id.graduation_project);
-
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
-        btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
+        view.findViewById(R.id.hot_film).setOnClickListener(this);
+        view.findViewById(R.id.stock).setOnClickListener(this);
+        view.findViewById(R.id.reader).setOnClickListener(this);
+        view.findViewById(R.id.news).setOnClickListener(this);
+        view.findViewById(R.id.graduation_project).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.hot_film:
-                showToast("热门电影开始运行");
+                showToast(R.string.hot_film_toast);
                 break;
             case R.id.stock:
-                showToast("股票雄鹰开始运行");
+                showToast(R.string.stock_toast);
                 break;
             case R.id.reader:
-                showToast("阅读器开始运行");
+                showToast(R.string.xyz_reader_toast);
                 break;
             case R.id.news:
-                showToast("最新新闻开始运行");
+                showToast(R.string.newest_news_toast);
                 break;
             case R.id.graduation_project:
-                showToast("毕业设计开始运行");
+                showToast(R.string.graduation_project_toast);
                 break;
         }
     }
 
-    private void showToast(String s) {
-        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+    private void showToast(int resId){
+        if(mToast == null){
+            mToast = Toast.makeText(getContext(),resId,Toast.LENGTH_SHORT);
+        }else{
+            mToast.setText(getString(resId));
+        }
+        mToast.show();
     }
 }

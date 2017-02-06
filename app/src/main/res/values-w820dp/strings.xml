@@ -11,4 +11,10 @@
     <string name="newest_news">最新新闻</string>
     <string name="graduation_project">毕业设计</string>
 
+    <string name="hot_film_toast">运行程序：热门电影</string>
+    <string name="stock_toast">运行程序：股票雄鹰</string>
+    <string name="xyz_reader_toast">运行程序：xyz阅读器</string>
+    <string name="newest_news_toast">运行程序：最新新闻</string>
+    <string name="graduation_project_toast">运行程序：毕业设计</string>
+
 </resources>
