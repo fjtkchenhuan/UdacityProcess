@@ -82,9 +82,7 @@ public class MainFragment extends Fragment {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-
-
-            new ForeastAsyncTask().execute("51800");
+            new ForeastAsyncTask(mForecastAdapter).execute("94043");
             Toast.makeText(getContext(), "刷新.........", Toast.LENGTH_SHORT).show();
             return true;
         }
