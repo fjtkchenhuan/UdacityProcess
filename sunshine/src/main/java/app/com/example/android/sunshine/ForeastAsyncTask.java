@@ -1,5 +1,6 @@
 package app.com.example.android.sunshine;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -15,9 +16,7 @@ import java.net.URL;
  */
 
 class ForeastAsyncTask extends AsyncTask<String,Void,String> {
-    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7&APPID=a7f85548b039d7cc91d366f31638e24b";
-
-    private  String getJsonString() {
+    private  String getJsonString(String stringUrl) {
         // These two need to be declared outside the try/catch
         // so that they can be closed in the finally block.
         HttpURLConnection urlConnection = null;
@@ -30,7 +29,7 @@ class ForeastAsyncTask extends AsyncTask<String,Void,String> {
             // Construct the URL for the OpenWeatherMap query
             // Possible parameters are available at OWM's forecast API page, at
             // http://openweathermap.org/API#forecast
-            URL url = new URL(WEATHER_URL);
+            URL url = new URL(stringUrl);
 
             // Create the request to OpenWeatherMap, and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -83,6 +82,36 @@ class ForeastAsyncTask extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        return getJsonString();
+        String format = "json";
+        String units = "metric";
+        int numDays = 7;
+
+        final String FORECAST_BASE_URL =
+                "http://api.openweathermap.org/data/2.5/forecast/daily?";
+        final String QUERY_PARAM = "q";
+        final String FORMAT_PARAM = "mode";
+        final String UNITS_PARAM = "units";
+        final String DAYS_PARAM = "cnt";
+        final String APPID_PARAM = "APPID";
+
+        Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+                .appendQueryParameter(QUERY_PARAM, strings[0])
+                .appendQueryParameter(FORMAT_PARAM, format)
+                .appendQueryParameter(UNITS_PARAM, units)
+                .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                .appendQueryParameter(APPID_PARAM, "a7f85548b039d7cc91d366f31638e24b")
+                .build();
+        return getJsonString(builtUri.toString());
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        Log.d("ForeastAsyncTask", s);
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
 }
