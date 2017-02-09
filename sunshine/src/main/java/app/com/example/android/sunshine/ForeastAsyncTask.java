@@ -131,10 +131,8 @@ class ForeastAsyncTask extends AsyncTask<String,Void,String[]> {
         super.onPostExecute(s);
         if (s != null) {
             mForecastAdapter.clear();
-            for(String dayForecastStr : s) {
-                mForecastAdapter.add(dayForecastStr);
-            }
-            // New data is back from the server.  Hooray!
+            mForecastAdapter.addAll(s);
+            mForecastAdapter.notifyDataSetChanged();
         }
 
     }
